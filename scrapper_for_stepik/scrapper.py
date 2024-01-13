@@ -44,7 +44,7 @@ while True:
             os.makedirs('stepik')
 
         with open(BASE_PATH + f'stepik/{name}' + 'txt',
-                'w', encoding='utf-8') as file:
+                  'w', encoding='utf-8') as file:
             file.writelines(text)
             file.writelines(examples)
 
