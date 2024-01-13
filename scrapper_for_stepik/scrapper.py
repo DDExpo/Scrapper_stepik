@@ -1,4 +1,5 @@
 import json
+import os
 
 from playwright.sync_api import sync_playwright
 import lxml.html as html
@@ -39,8 +40,11 @@ while True:
         data = tree.xpath('//*[@class="step-inner page-fragment"]')
         name, text, examples = text_formatting(data)
 
+        if not os.path.exists(os.path.dirname(os.path.realpath(__file__)) + '/stepik'):
+            os.makedirs('stepik')
+
         with open(BASE_PATH + f'stepik/{name}' + 'txt',
-                  'w', encoding='utf-8') as file:
+                'w', encoding='utf-8') as file:
             file.writelines(text)
             file.writelines(examples)
 
